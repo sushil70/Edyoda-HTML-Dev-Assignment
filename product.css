@@ -1,0 +1,178 @@
+body{
+    margin: 0;
+    background-color: #f6f7fb;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+.main_header{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0 48px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    box-shadow: 0 2px 4px #ccc;
+    background-color: #fff;
+    justify-content: space-between;
+}
+
+
+.header{
+    display: flex;
+    align-items: center;
+}
+
+.logo{
+    margin-right: 36px;
+    display: flex;
+    align-items: center;
+}
+
+.logo img{
+    width: 24px;
+    height: 28px;
+    margin-right: 8px;
+}
+
+.logo_text{
+    font-size: 24px;
+    letter-spacing: -1px;
+    font-weight: 500;
+    margin: 0;
+    color: rgba(0,0,0,.8);
+}
+
+.nav_item{
+    display: inline-block;
+    text-decoration: none;
+    color: rgba(0,0,0,.8);
+    padding: 24px 0 16px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: .6px;
+    margin: 0 10px;
+}
+
+.logoututton{
+    display: inline-block;
+    text-decoration: none;
+    color: rgba(0,0,0,.8);
+    padding: 24px 0 16px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: .6px;
+    margin: 0 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.main_head{
+    margin-top: 100px;
+}
+
+.main{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 8% 4%;
+}
+
+.title{
+    margin: 0
+}
+
+.table_main{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    padding: 24px 0;
+}
+
+.filter_main{
+    width: 180px;
+}
+
+.filter_main h3{
+    margin: 0;
+}
+
+.filter{
+    display: flex;
+    flex-direction: column;
+}
+
+.filter_checkbox{
+    margin: 6px 0;
+    cursor: pointer;
+}
+
+.filter_checkbox input{
+    margin-right: 12px;
+}
+
+.ordertable{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ordertable th{
+    text-align: left;
+    padding: 12px 24px;
+    font-size: 14px;
+}
+
+.table_row td{
+    background-color: #fff;
+    border-bottom: 4px solid #f6f7fb;
+    text-align: left;
+    padding: 12px 24px;
+    font-size: 14px;
+}
+
+.id_data{
+    color: #8c8c8c;
+}
+
+.productdata{
+    color: rgba(0,0,0,.8);
+    font-weight: 500;
+}
+
+.branddata{
+    color: rgba(0,0,0,.8);
+    font-weight: 500;
+    color: #8c8c8c;
+}
+
+.stockdata{
+    color: #8c8c8c;
+}
+
+.pricedata{
+    color: #8c8c8c;
+}
+
+.status_data{
+    color: rgba(0,0,0,.8);
+    font-weight: 500;
+}
+
+
+.active{
+    color: #20b883;
+    border-bottom: 3px solid #20b883;
+}

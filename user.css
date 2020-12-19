@@ -1,0 +1,189 @@
+body{
+    margin: 0;
+    background-color: #f6f7fb;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+.main_header{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0 48px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    box-shadow: 0 2px 4px #ccc;
+    background-color: #fff;
+    justify-content: space-between;
+}
+
+
+.header{
+    display: flex;
+    align-items: center;
+}
+
+.logo{
+    margin-right: 36px;
+    display: flex;
+    align-items: center;
+}
+
+.logo img{
+    width: 24px;
+    height: 28px;
+    margin-right: 8px;
+}
+
+.logo_text{
+    font-size: 24px;
+    letter-spacing: -1px;
+    font-weight: 500;
+    margin: 0;
+    color: rgba(0,0,0,.8);
+}
+
+.nav_item{
+    display: inline-block;
+    text-decoration: none;
+    color: rgba(0,0,0,.8);
+    padding: 24px 0 16px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: .6px;
+    margin: 0 10px;
+}
+
+.logoututton{
+    display: inline-block;
+    text-decoration: none;
+    color: rgba(0,0,0,.8);
+    padding: 24px 0 16px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: .6px;
+    margin: 0 10px;
+}
+
+
+
+
+
+
+
+
+
+.main_part{
+    margin-top: 100px;
+}
+
+.main{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 8% 4%;
+}
+
+.title{
+    margin: 0;
+}
+
+.order{
+    width: 100%;
+    padding: 24px 0;
+}
+
+.form{
+    width: 700px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 48px;
+}
+
+.searchbox{
+    width: calc(100% - 100px);
+    padding: 12px 24px;
+    font-size: 15px;
+    border: 0;
+    border-bottom: 2px solid #8c8c8c;
+    margin: 0 36px 0 0;
+    outline: none;
+}
+
+.reset{
+    display: inline-block;
+    border-radius: 30px;
+    padding: 14px 36px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    background-color: #20b883;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.maintable{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.maintable th{
+    text-align: left;
+    padding: 12px 24px;
+    font-size: 14px;
+}
+
+.tablerow{
+    vertical-align: middle;
+}
+
+.tablerow th{
+    text-align: left;
+    padding: 12px 24px;
+    font-size: 14px;
+}
+
+.tablerow td{
+    background-color: #fff;
+    border-bottom: 4px solid #f6f7fb;
+    text-align: left;
+    padding: 12px 24px;
+    font-size: 14px;
+}
+
+.iddata{
+    color: #8c8c8c;
+}
+
+.avatardata{
+    color: rgba(0,0,0,.8);
+    font-weight: 500;
+}
+
+.fullnamedata{
+    color: #8c8c8c;
+}
+
+.boddata{
+    color: rgba(0,0,0,.8);
+    font-weight: 500;
+}
+
+.genderdata{
+    color: #8c8c8c;
+}
+
+.locationdata{
+    color: #8c8c8c;
+}
+
+
+.active{
+    color: #20b883;
+    border-bottom: 3px solid #20b883;
+}
