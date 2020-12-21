@@ -1,3 +1,6 @@
+if (localStorage.getItem("status") == "false") {
+    location.replace("index.html")
+}
 $(document).ready(function () {
     function tableCreation(data) {
         var tabelCreated = `<tr class="tablerow">
@@ -21,7 +24,7 @@ $(document).ready(function () {
         </td>
     </tr>`
 
-        $("tbody").append(tabelCreated)
+        $("#tbodys").append(tabelCreated)
     }
 
     $(".logoututton").on("click", function () {
@@ -32,114 +35,328 @@ $(document).ready(function () {
         "https://5fc1a1c9cb4d020016fe6b07.mockapi.io/api/v1/orders",
         function (data) {
             var gettedData = data
+            $(".tablerow").remove()
             for (var i = 0; i < gettedData.length; i++) {
                 tableCreation(gettedData[i])
             }
 
-            // $('.nav_item').addclass('active')
+            var newchecker = document.getElementById("new")
+            var packedchecker = document.getElementById("packed")
+            var transitchecker = document.getElementById("transit")
+            var deliveredchecker = document.getElementById("delivered")
 
-            $("#new").on("click", function () {
+            $("#filter").on("click", function () {
                 $(".tablerow").remove()
-                if (this.checked == true) {
+                if (
+                    newchecker.checked == true &&
+                    packedchecker.checked == false &&
+                    transitchecker.checked == false &&
+                    deliveredchecker.checked == false
+                ) {
                     var count = 0
                     for (var i = 0; i < gettedData.length; i++) {
                         var takingDataFromApi = gettedData[i].orderStatus
-                        // if (takingDataFromApi == "New") {
-                        console.log("yes")
-                        count = count + 1
-                        tableCreation(gettedData[i])
-                        // }
-                    }
-                    $("#countDisplay").text("Count: " + count)
-                }
-                if (this.checked == false) {
-                    var count = 0
-                    for (var i = 0; i < gettedData.length; i++) {
-                        var takingDataFromApi = gettedData[i].orderStatus
-                        if (takingDataFromApi !== "New") {
-                            console.log("not")
+                        if (takingDataFromApi == "New") {
+                            console.log("yes")
                             count = count + 1
                             tableCreation(gettedData[i])
                         }
                     }
                     $("#countDisplay").text("Count: " + count)
                 }
-            })
-
-            $("#packed").on("click", function () {
-                $(".tablerow").remove()
-                if (this.checked == true) {
+                if (
+                    newchecker.checked == false &&
+                    packedchecker.checked == true &&
+                    transitchecker.checked == false &&
+                    deliveredchecker.checked == false
+                ) {
                     var count = 0
                     for (var i = 0; i < gettedData.length; i++) {
                         var takingDataFromApi = gettedData[i].orderStatus
-                        // if (takingDataFromApi == "Packed") {
-                        console.log("yes")
-                        count = count + 1
-                        tableCreation(gettedData[i])
-                        // }
-                    }
-                    $("#countDisplay").text("Count: " + count)
-                }
-                if (this.checked == false) {
-                    var count = 0
-                    for (var i = 0; i < gettedData.length; i++) {
-                        var takingDataFromApi = gettedData[i].orderStatus
-                        if (takingDataFromApi !== "Packed") {
-                            console.log("not")
+                        if (takingDataFromApi == "Packed") {
+                            console.log("yes")
                             count = count + 1
                             tableCreation(gettedData[i])
                         }
                     }
                     $("#countDisplay").text("Count: " + count)
                 }
-            })
-            $("#transit").on("click", function () {
-                $(".tablerow").remove()
-                if (this.checked == true) {
+                if (
+                    newchecker.checked == false &&
+                    packedchecker.checked == false &&
+                    transitchecker.checked == true &&
+                    deliveredchecker.checked == false
+                ) {
                     var count = 0
                     for (var i = 0; i < gettedData.length; i++) {
                         var takingDataFromApi = gettedData[i].orderStatus
-                        // if (takingDataFromApi == "Packed") {
-                        console.log("yes")
-                        count = count + 1
-                        tableCreation(gettedData[i])
-                        // }
-                    }
-                    $("#countDisplay").text("Count: " + count)
-                }
-                if (this.checked == false) {
-                    var count = 0
-                    for (var i = 0; i < gettedData.length; i++) {
-                        var takingDataFromApi = gettedData[i].orderStatus
-                        if (takingDataFromApi !== "InTransit") {
-                            console.log("not")
+                        if (takingDataFromApi == "InTransit") {
+                            console.log("yes")
                             count = count + 1
                             tableCreation(gettedData[i])
                         }
                     }
                     $("#countDisplay").text("Count: " + count)
                 }
-            })
-            $("#delivered").on("click", function () {
-                $(".tablerow").remove()
-                if (this.checked == true) {
+                if (
+                    newchecker.checked == false &&
+                    packedchecker.checked == false &&
+                    transitchecker.checked == false &&
+                    deliveredchecker.checked == true
+                ) {
                     var count = 0
                     for (var i = 0; i < gettedData.length; i++) {
                         var takingDataFromApi = gettedData[i].orderStatus
-                        // if (takingDataFromApi == "Packed") {
-                        console.log("yes")
-                        count = count + 1
-                        tableCreation(gettedData[i])
-                        // }
+                        if (takingDataFromApi == "Delivered") {
+                            console.log("yes")
+                            count = count + 1
+                            tableCreation(gettedData[i])
+                        }
                     }
                     $("#countDisplay").text("Count: " + count)
                 }
-                if (this.checked == false) {
+                if (
+                    newchecker.checked == true &&
+                    packedchecker.checked == true &&
+                    transitchecker.checked == false &&
+                    deliveredchecker.checked == false
+                ) {
                     var count = 0
                     for (var i = 0; i < gettedData.length; i++) {
                         var takingDataFromApi = gettedData[i].orderStatus
-                        if (takingDataFromApi !== "Delivered") {
-                            console.log("not")
+                        if (
+                            takingDataFromApi == "New" ||
+                            takingDataFromApi == "Packed"
+                        ) {
+                            console.log("yes")
+                            count = count + 1
+                            tableCreation(gettedData[i])
+                        }
+                    }
+                    $("#countDisplay").text("Count: " + count)
+                }
+                if (
+                    newchecker.checked == true &&
+                    packedchecker.checked == false &&
+                    transitchecker.checked == true &&
+                    deliveredchecker.checked == false
+                ) {
+                    var count = 0
+                    for (var i = 0; i < gettedData.length; i++) {
+                        var takingDataFromApi = gettedData[i].orderStatus
+                        if (
+                            takingDataFromApi == "New" ||
+                            takingDataFromApi == "InTransit"
+                        ) {
+                            console.log("yes")
+                            count = count + 1
+                            tableCreation(gettedData[i])
+                        }
+                    }
+                    $("#countDisplay").text("Count: " + count)
+                }
+                if (
+                    newchecker.checked == true &&
+                    packedchecker.checked == false &&
+                    transitchecker.checked == false &&
+                    deliveredchecker.checked == true
+                ) {
+                    var count = 0
+                    for (var i = 0; i < gettedData.length; i++) {
+                        var takingDataFromApi = gettedData[i].orderStatus
+                        if (
+                            takingDataFromApi == "New" ||
+                            takingDataFromApi == "Delivered"
+                        ) {
+                            console.log("yes")
+                            count = count + 1
+                            tableCreation(gettedData[i])
+                        }
+                    }
+                    $("#countDisplay").text("Count: " + count)
+                }
+                if (
+                    newchecker.checked == false &&
+                    packedchecker.checked == true &&
+                    transitchecker.checked == true &&
+                    deliveredchecker.checked == false
+                ) {
+                    var count = 0
+                    for (var i = 0; i < gettedData.length; i++) {
+                        var takingDataFromApi = gettedData[i].orderStatus
+                        if (
+                            takingDataFromApi == "Packed" ||
+                            takingDataFromApi == "InTransit"
+                        ) {
+                            console.log("yes")
+                            count = count + 1
+                            tableCreation(gettedData[i])
+                        }
+                    }
+                    $("#countDisplay").text("Count: " + count)
+                }
+                if (
+                    newchecker.checked == false &&
+                    packedchecker.checked == true &&
+                    transitchecker.checked == false &&
+                    deliveredchecker.checked == true
+                ) {
+                    var count = 0
+                    for (var i = 0; i < gettedData.length; i++) {
+                        var takingDataFromApi = gettedData[i].orderStatus
+                        if (
+                            takingDataFromApi == "Packed" ||
+                            takingDataFromApi == "Delivered"
+                        ) {
+                            console.log("yes")
+                            count = count + 1
+                            tableCreation(gettedData[i])
+                        }
+                    }
+                    $("#countDisplay").text("Count: " + count)
+                }
+                if (
+                    newchecker.checked == false &&
+                    packedchecker.checked == false &&
+                    transitchecker.checked == true &&
+                    deliveredchecker.checked == true
+                ) {
+                    var count = 0
+                    for (var i = 0; i < gettedData.length; i++) {
+                        var takingDataFromApi = gettedData[i].orderStatus
+                        if (
+                            takingDataFromApi == "InTransit" ||
+                            takingDataFromApi == "Delivered"
+                        ) {
+                            console.log("yes")
+                            count = count + 1
+                            tableCreation(gettedData[i])
+                        }
+                    }
+                    $("#countDisplay").text("Count: " + count)
+                }
+                if (
+                    newchecker.checked == true &&
+                    packedchecker.checked == true &&
+                    transitchecker.checked == true &&
+                    deliveredchecker.checked == false
+                ) {
+                    var count = 0
+                    for (var i = 0; i < gettedData.length; i++) {
+                        var takingDataFromApi = gettedData[i].orderStatus
+                        if (
+                            takingDataFromApi == "New" ||
+                            takingDataFromApi == "Packed" ||
+                            takingDataFromApi == "InTransit"
+                        ) {
+                            console.log("yes")
+                            count = count + 1
+                            tableCreation(gettedData[i])
+                        }
+                    }
+                    $("#countDisplay").text("Count: " + count)
+                }
+                if (
+                    newchecker.checked == true &&
+                    packedchecker.checked == true &&
+                    transitchecker.checked == false &&
+                    deliveredchecker.checked == true
+                ) {
+                    var count = 0
+                    for (var i = 0; i < gettedData.length; i++) {
+                        var takingDataFromApi = gettedData[i].orderStatus
+                        if (
+                            takingDataFromApi == "New" ||
+                            takingDataFromApi == "Packed" ||
+                            takingDataFromApi == "Delivered"
+                        ) {
+                            console.log("yes")
+                            count = count + 1
+                            tableCreation(gettedData[i])
+                        }
+                    }
+                    $("#countDisplay").text("Count: " + count)
+                }
+                if (
+                    newchecker.checked == true &&
+                    packedchecker.checked == false &&
+                    transitchecker.checked == true &&
+                    deliveredchecker.checked == true
+                ) {
+                    var count = 0
+                    for (var i = 0; i < gettedData.length; i++) {
+                        var takingDataFromApi = gettedData[i].orderStatus
+                        if (
+                            takingDataFromApi == "New" ||
+                            takingDataFromApi == "InTransit" ||
+                            takingDataFromApi == "Delivered"
+                        ) {
+                            console.log("yes")
+                            count = count + 1
+                            tableCreation(gettedData[i])
+                        }
+                    }
+                    $("#countDisplay").text("Count: " + count)
+                }
+                if (
+                    newchecker.checked == false &&
+                    packedchecker.checked == true &&
+                    transitchecker.checked == true &&
+                    deliveredchecker.checked == true
+                ) {
+                    var count = 0
+                    for (var i = 0; i < gettedData.length; i++) {
+                        var takingDataFromApi = gettedData[i].orderStatus
+                        if (
+                            takingDataFromApi == "Packed" ||
+                            takingDataFromApi == "InTransit" ||
+                            takingDataFromApi == "Delivered"
+                        ) {
+                            console.log("yes")
+                            count = count + 1
+                            tableCreation(gettedData[i])
+                        }
+                    }
+                    $("#countDisplay").text("Count: " + count)
+                }
+                if (
+                    newchecker.checked == true &&
+                    packedchecker.checked == true &&
+                    transitchecker.checked == true &&
+                    deliveredchecker.checked == true
+                ) {
+                    var count = 0
+                    for (var i = 0; i < gettedData.length; i++) {
+                        var takingDataFromApi = gettedData[i].orderStatus
+                        if (
+                            takingDataFromApi == "New" ||
+                            takingDataFromApi == "Packed" ||
+                            takingDataFromApi == "InTransit" ||
+                            takingDataFromApi == "Delivered"
+                        ) {
+                            console.log("yes")
+                            count = count + 1
+                            tableCreation(gettedData[i])
+                        }
+                    }
+                    $("#countDisplay").text("Count: " + count)
+                }
+                if (
+                    newchecker.checked == false &&
+                    packedchecker.checked == false &&
+                    transitchecker.checked == false &&
+                    deliveredchecker.checked == false
+                ) {
+                    var count = 0
+                    for (var i = 0; i < gettedData.length; i++) {
+                        var takingDataFromApi = gettedData[i].orderStatus
+                        if (
+                            takingDataFromApi !== "New" &&
+                            takingDataFromApi !== "Packed" &&
+                            takingDataFromApi !== "InTransit" &&
+                            takingDataFromApi !== "Delivered"
+                        ) {
+                            console.log("yes")
                             count = count + 1
                             tableCreation(gettedData[i])
                         }
