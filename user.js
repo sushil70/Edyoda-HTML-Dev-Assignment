@@ -1,3 +1,6 @@
+if (localStorage.getItem("status") == "false") {
+    location.replace("index.html")
+}
 $(document).ready(function () {
     function creatertable(data) {
         var addtable = `<tr class="tablerow">
@@ -38,23 +41,30 @@ $(document).ready(function () {
             $("#logout").on("click", function () {
                 localStorage.setItem("status", "false")
             })
-            $("#searchbox").on("keyup", function () {
-                $(".tablerow").remove()
-                var valueGot = this.value.toLowerCase()
-                if (valueGot.length >= 2) {
-                    for (var i = 0; i < user.length; i++) {
-                        var name = user[i].fullName.toLowerCase()
-                        var comparingFinder = name.search(valueGot)
+            $("#reset").click(function (event) {
+                event.preventDefault()
+            })
+            $("#searchbox").on("keypress", function (event) {
+                var keycode = event.keyCode ? event.keyCode : event.which
+                if (keycode == "13") {
+                    event.preventDefault()
+                    $(".tablerow").remove()
+                    var valueGot = this.value.toLowerCase()
+                    if (valueGot.length >= 2) {
+                        for (var i = 0; i < user.length; i++) {
+                            var name = user[i].fullName.toLowerCase()
+                            var comparingFinder = name.search(valueGot)
 
-                        if (comparingFinder >= 0) {
+                            if (comparingFinder >= 0) {
+                                creatertable(user[i])
+                            }
+                        }
+                    } else {
+                        for (var i = 0; i < user.length; i++) {
                             creatertable(user[i])
                         }
+                        alert("Please enter at least 2 characters")
                     }
-                } else {
-                    for (var i = 0; i < user.length; i++) {
-                        creatertable(user[i])
-                    }
-                    alert("Please enter at least 2 characters")
                 }
             })
             $("#reset").on("click", function () {
