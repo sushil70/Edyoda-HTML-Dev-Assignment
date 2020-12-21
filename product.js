@@ -1,3 +1,6 @@
+if (localStorage.getItem("status") == "false") {
+    location.replace("index.html")
+}
 $(document).ready(function () {
     function tableCreater(data) {
         var addtables = `<tr class="table_row">
@@ -21,7 +24,7 @@ $(document).ready(function () {
         </td>
     </tr>`
 
-        $("tbody").append(addtables)
+        $("#tbody").append(addtables)
     }
 
     $.get(
@@ -64,10 +67,8 @@ $(document).ready(function () {
                     for (var i = 0; i < products.length; i++) {
                         var intprice = products[i].stock
                         console.log(intprice)
-                        // if (intprice > 100) {
                         count = count + 1
                         tableCreater(products[i])
-                        // }
                     }
                     $("#countDisplay").text("Count: " + count)
                 }
@@ -94,10 +95,14 @@ $(document).ready(function () {
 
                     for (var i = 0; i < products.length; i++) {
                         var datadate = products[i].expiryDate
-                        // if (d.getFullYear() > datadate.split("-")[2]) {
-                        count = count + 1
-                        tableCreater(products[i])
-                        // }
+                        var intprice = products[i].stock
+                        if (
+                            d.getFullYear() < datadate.split("-")[2] &&
+                            intprice > 100
+                        ) {
+                            count = count + 1
+                            tableCreater(products[i])
+                        }
                     }
                     $("#countDisplay").text("Count: " + count)
                 }
@@ -156,10 +161,14 @@ $(document).ready(function () {
 
                     for (var i = 0; i < products.length; i++) {
                         var datadate = products[i].expiryDate
-                        // if (d.getFullYear() > datadate.split("-")[2]) {
-                        count = count + 1
-                        tableCreater(products[i])
-                        // }
+                        var intprice = products[i].stock
+                        if (
+                            d.getFullYear() < datadate.split("-")[2] &&
+                            intprice > 100
+                        ) {
+                            count = count + 1
+                            tableCreater(products[i])
+                        }
                     }
                     $("#countDisplay").text("Count: " + count)
                 }
